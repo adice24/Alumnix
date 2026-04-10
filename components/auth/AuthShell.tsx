@@ -85,12 +85,12 @@ export function AuthShell({
 
              {/* Testimonial Feature - Optimized performance */}
              <div className="relative z-10 w-full shrink-0 rounded-[2.5rem] bg-white/20 p-8 border border-white/20 shadow-lg overflow-hidden">
-                <p className="relative z-10 text-md font-black italic text-black/95">"The fastest referral I've ever got."</p>
+                <p className="relative z-10 text-md font-black italic text-black/95">&quot;The fastest referral I&apos;ve ever got.&quot;</p>
                 <div className="relative z-10 mt-6 flex items-center gap-4">
                    <div className="h-14 w-14 shrink-0 rounded-2xl bg-brand-orange flex items-center justify-center font-black text-white shadow-xl">PS</div>
                    <div>
                       <p className="text-sm font-black text-black">Priya S.</p>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-black/50">BATCH '22 · PM @ SWIGGY</p>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-black/50">BATCH &apos;22 · PM @ SWIGGY</p>
                    </div>
                 </div>
              </div>

@@ -27,7 +27,7 @@ export default async function NetworkHub() {
             The Network that <br /> <span className="text-brand-orange underline decoration-white/20 underline-offset-8">Never Stops</span> Growing.
           </h1>
           <p className="mt-6 text-lg text-white/70 font-medium italic">
-             "Connecting verified alumni across the globe to build the career network that your internship started."
+             &quot;Connecting verified alumni across the globe to build the career network that your internship started.&quot;
           </p>
           
           <div className="mt-10 flex items-center gap-2 rounded-2xl bg-white/10 p-2 backdrop-blur-xl border border-white/10">
@@ -85,7 +85,7 @@ export default async function NetworkHub() {
                       <ConnectButton toUserId={person.id} disabled={isConnected} />
                     )}
                     {isMe && (
-                      <div className="flex-1 py-3 text-xs font-bold text-brand-muted bg-brand-surface rounded-full uppercase tracking-wider">It's You</div>
+                      <div className="flex-1 py-3 text-xs font-bold text-brand-muted bg-brand-surface rounded-full uppercase tracking-wider">It&apos;s You</div>
                     )}
                     <button className="p-3.5 rounded-full bg-brand-surface text-brand-muted hover:text-brand-navy hover:bg-brand-sky/20 transition-all">
                       <Linkedin className="h-5 w-5" />

@@ -103,7 +103,7 @@ export default function LoginPage() {
             href="/auth/signup" 
             className="text-center text-sm font-black uppercase tracking-[0.4em] text-black hover:text-brand-orange transition-colors"
           >
-            DON'T HAVE AN ACCOUNT? <span className="border-b-2 border-black">JOIN NOW</span>
+            DON&apos;T HAVE AN ACCOUNT? <span className="border-b-2 border-black">JOIN NOW</span>
           </Link>
         </div>
       </form>

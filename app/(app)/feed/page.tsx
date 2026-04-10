@@ -51,7 +51,7 @@ export default async function FeedPage() {
               {post.content}
             </p>
 
-            {post.metadata && (
+            {(post as any).metadata && (
                <div className="rounded-3xl bg-brand-surface p-4 border border-brand-orange/10 flex items-center gap-4">
                   <div className="h-16 w-16 bg-brand-orange/10 rounded-2xl flex items-center justify-center text-brand-orange">
                      <Megaphone className="h-8 w-8" />

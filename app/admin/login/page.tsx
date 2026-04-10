@@ -8,7 +8,9 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export default function AdminLoginPage() {
+import { Suspense } from "react";
+
+function AdminLoginContent() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -108,5 +110,13 @@ export default function AdminLoginPage() {
         </div>
       </form>
     </AuthShell>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <AdminLoginContent />
+    </Suspense>
   );
 }

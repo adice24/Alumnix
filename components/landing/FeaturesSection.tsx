@@ -100,24 +100,24 @@ export default function FeaturesSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="animated-card group relative flex flex-col p-6 sm:p-8"
             >
-              <div className="relative mb-4 h-40 w-full overflow-hidden rounded-xl border border-white/10">
+              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm">
                 <Image 
                   src={feature.image} 
                   alt={feature.title} 
                   fill 
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-black/50 backdrop-blur-sm`}>
+                <div className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-sm backdrop-blur-sm`}>
                   <feature.icon className={`h-5 w-5 ${feature.iconColor}`} />
                 </div>
               </div>
-              <h3 className={`${syne.className} heading mt-2 text-xl font-bold text-white`}>
+              <h3 className={`${syne.className} heading mt-2 text-xl font-bold text-brand-dark`}>
                 {feature.title}
               </h3>
-              <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-gray-300 font-medium`}>
+              <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-muted font-medium`}>
                 {feature.description}
               </p>
-              <button className={`${nunito.className} mt-6 inline-flex items-center text-sm font-extrabold text-[#e81cff] hover:text-[#fc00ff]`}>
+              <button className={`${nunito.className} mt-6 inline-flex items-center text-sm font-extrabold text-brand-orange hover:text-brand-amber`}>
                 Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
               </button>
             </motion.div>

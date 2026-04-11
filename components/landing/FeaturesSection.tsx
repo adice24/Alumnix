@@ -122,26 +122,26 @@ export default function FeaturesSection() {
               <div className="card h-full w-full">
                 <Link 
                   href={feature.href} 
-                  className="content h-full p-6 sm:p-8"
+                  className="content h-full"
                 >
-                  <div className="relative mb-5 h-28 w-28 overflow-hidden flex-shrink-0 rounded-xl border border-brand-orange/20 shadow-sm transition-transform duration-500 hover:scale-105">
+                  <div className="relative mb-2 w-full h-48 overflow-hidden rounded-xl border border-brand-orange/20 shadow-sm transition-transform duration-500 hover:scale-105">
                     <Image 
                       src={feature.image} 
                       alt={feature.title} 
                       fill 
                       className="object-cover"
                     />
-                    <div className={`absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
-                      <feature.icon className={`h-4 w-4 ${feature.iconColor}`} />
+                    <div className={`absolute bottom-0 right-0 flex h-10 w-10 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
+                      <feature.icon className={`h-5 w-5 ${feature.iconColor}`} />
                     </div>
                   </div>
-                  <h3 className={`${syne.className} heading mt-2 text-lg font-bold text-brand-dark z-10`}>
+                  <h3 className={`${syne.className} heading mt-2 text-xl font-bold text-brand-dark z-10 block`}>
                     {feature.title}
                   </h3>
-                  <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-dark/80 font-medium z-10`}>
+                  <p className={`${nunito.className} mt-2 flex-1 text-sm leading-relaxed text-brand-dark/80 font-medium z-10 block`}>
                     {feature.description}
                   </p>
-                  <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors z-10 hover:text-brand-amber hover:underline`}>
+                  <div className={`${nunito.className} mt-auto inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors z-10 hover:text-brand-amber hover:underline`}>
                     Learn more &rarr;
                   </div>
                 </Link>

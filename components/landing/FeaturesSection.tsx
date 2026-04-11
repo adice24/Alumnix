@@ -122,20 +122,16 @@ export default function FeaturesSection() {
               <Link 
                 href={feature.href} 
                 className="animated-card group relative flex h-full flex-col p-5"
-                style={{
-                  "--card-color-1": feature.gradientStart,
-                  "--card-color-2": feature.gradientEnd,
-                } as React.CSSProperties}
               >
-                <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg border border-gray-100 shadow-sm">
+                <div className="relative mb-5 h-28 w-28 overflow-hidden rounded-xl border border-white/40 shadow-sm flex-shrink-0">
                   <Image 
                     src={feature.image} 
                     alt={feature.title} 
                     fill 
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-sm backdrop-blur-sm`}>
-                    <feature.icon className={`h-5 w-5 ${feature.iconColor}`} />
+                  <div className={`absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
+                    <feature.icon className={`h-4 w-4 ${feature.iconColor}`} />
                   </div>
                 </div>
                 <h3 className={`${syne.className} heading mt-2 text-lg font-bold text-brand-dark`}>

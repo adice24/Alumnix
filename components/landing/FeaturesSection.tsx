@@ -15,6 +15,8 @@ const features = [
     iconColor: "text-brand-orange",
     image: "/features/alumni_network.png",
     href: "/network",
+    gradientStart: "#FFA62B",
+    gradientEnd: "#FFD166",
   },
   {
     icon: Briefcase,
@@ -24,6 +26,8 @@ const features = [
     iconColor: "text-brand-navy",
     image: "/features/gig_board.png",
     href: "/feed",
+    gradientStart: "#86C5FF",
+    gradientEnd: "#5CA8FF",
   },
   {
     icon: Calendar,
@@ -33,6 +37,8 @@ const features = [
     iconColor: "text-brand-amber",
     image: "/features/events_programs.png",
     href: "/events",
+    gradientStart: "#FACC15",
+    gradientEnd: "#F97316",
   },
   {
     icon: ClipboardList,
@@ -42,6 +48,8 @@ const features = [
     iconColor: "text-brand-orange",
     image: "/features/application_tracker.png",
     href: "#",
+    gradientStart: "#FFA62B",
+    gradientEnd: "#FFD166",
   },
   {
     icon: Megaphone,
@@ -51,6 +59,8 @@ const features = [
     iconColor: "text-brand-navy",
     image: "/features/live_announcements.png",
     href: "/feed",
+    gradientStart: "#86C5FF",
+    gradientEnd: "#5CA8FF",
   },
   {
     icon: Sparkles,
@@ -60,6 +70,8 @@ const features = [
     iconColor: "text-brand-amber",
     image: "/features/smart_recommendations.png",
     href: "#",
+    gradientStart: "#FACC15",
+    gradientEnd: "#F97316",
   },
 ];
 
@@ -107,8 +119,15 @@ export default function FeaturesSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="h-full"
             >
-              <Link href={feature.href} className="animated-card group relative flex h-full flex-col p-5">
-                <div className="relative mb-4 h-36 w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm">
+              <Link 
+                href={feature.href} 
+                className="animated-card group relative flex h-full flex-col p-5"
+                style={{
+                  "--card-color-1": feature.gradientStart,
+                  "--card-color-2": feature.gradientEnd,
+                } as React.CSSProperties}
+              >
+                <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg border border-gray-100 shadow-sm">
                   <Image 
                     src={feature.image} 
                     alt={feature.title} 

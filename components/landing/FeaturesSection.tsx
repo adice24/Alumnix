@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Users, Briefcase, Calendar, ClipboardList, Megaphone, Sparkles } from "lucide-react";
 import { syne, nunito } from "@/lib/fonts";
 
@@ -13,6 +14,7 @@ const features = [
     color: "bg-brand-orange/10",
     iconColor: "text-brand-orange",
     image: "/features/alumni_network.png",
+    href: "/network",
   },
   {
     icon: Briefcase,
@@ -21,6 +23,7 @@ const features = [
     color: "bg-brand-sky/20",
     iconColor: "text-brand-navy",
     image: "/features/gig_board.png",
+    href: "/feed",
   },
   {
     icon: Calendar,
@@ -29,6 +32,7 @@ const features = [
     color: "bg-brand-yellow/20",
     iconColor: "text-brand-amber",
     image: "/features/events_programs.png",
+    href: "/events",
   },
   {
     icon: ClipboardList,
@@ -37,6 +41,7 @@ const features = [
     color: "bg-brand-orange/10",
     iconColor: "text-brand-orange",
     image: "/features/application_tracker.png",
+    href: "#",
   },
   {
     icon: Megaphone,
@@ -45,6 +50,7 @@ const features = [
     color: "bg-brand-sky/20",
     iconColor: "text-brand-navy",
     image: "/features/live_announcements.png",
+    href: "/feed",
   },
   {
     icon: Sparkles,
@@ -53,6 +59,7 @@ const features = [
     color: "bg-brand-yellow/20",
     iconColor: "text-brand-amber",
     image: "/features/smart_recommendations.png",
+    href: "#",
   },
 ];
 
@@ -98,28 +105,30 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="animated-card group relative flex flex-col p-6 sm:p-8"
+              className="h-full"
             >
-              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm">
-                <Image 
-                  src={feature.image} 
-                  alt={feature.title} 
-                  fill 
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-sm backdrop-blur-sm`}>
-                  <feature.icon className={`h-5 w-5 ${feature.iconColor}`} />
+              <Link href={feature.href} className="animated-card group relative flex h-full flex-col p-5">
+                <div className="relative mb-4 h-36 w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm">
+                  <Image 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className={`absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-sm backdrop-blur-sm`}>
+                    <feature.icon className={`h-5 w-5 ${feature.iconColor}`} />
+                  </div>
                 </div>
-              </div>
-              <h3 className={`${syne.className} heading mt-2 text-xl font-bold text-brand-dark`}>
-                {feature.title}
-              </h3>
-              <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-muted font-medium`}>
-                {feature.description}
-              </p>
-              <button className={`${nunito.className} mt-6 inline-flex items-center text-sm font-extrabold text-brand-orange hover:text-brand-amber`}>
-                Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
-              </button>
+                <h3 className={`${syne.className} heading mt-2 text-lg font-bold text-brand-dark`}>
+                  {feature.title}
+                </h3>
+                <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-muted font-medium`}>
+                  {feature.description}
+                </p>
+                <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors group-hover:text-brand-amber`}>
+                  Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

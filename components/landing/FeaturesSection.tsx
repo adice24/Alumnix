@@ -119,31 +119,33 @@ export default function FeaturesSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="h-full"
             >
-              <Link 
-                href={feature.href} 
-                className="animated-card group relative flex h-full flex-col p-5"
-              >
-                <div className="relative mb-5 h-28 w-28 overflow-hidden rounded-xl border border-white/40 shadow-sm flex-shrink-0">
-                  <Image 
-                    src={feature.image} 
-                    alt={feature.title} 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className={`absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
-                    <feature.icon className={`h-4 w-4 ${feature.iconColor}`} />
+              <div className="animated-card group relative h-full w-full">
+                <Link 
+                  href={feature.href} 
+                  className="animated-content relative flex h-full flex-col p-6 sm:p-8"
+                >
+                  <div className="relative mb-5 h-28 w-28 overflow-hidden rounded-xl border border-brand-orange/20 shadow-sm flex-shrink-0">
+                    <Image 
+                      src={feature.image} 
+                      alt={feature.title} 
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className={`absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
+                      <feature.icon className={`h-4 w-4 ${feature.iconColor}`} />
+                    </div>
                   </div>
-                </div>
-                <h3 className={`${syne.className} heading mt-2 text-lg font-bold text-brand-dark`}>
-                  {feature.title}
-                </h3>
-                <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-muted font-medium`}>
-                  {feature.description}
-                </p>
-                <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors group-hover:text-brand-amber`}>
-                  Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
-                </div>
-              </Link>
+                  <h3 className={`${syne.className} heading mt-2 text-lg font-bold text-brand-dark z-10`}>
+                    {feature.title}
+                  </h3>
+                  <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-dark/80 font-medium z-10`}>
+                    {feature.description}
+                  </p>
+                  <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors group-hover:text-brand-amber z-10 hover:underline`}>
+                    Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
+                  </div>
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>

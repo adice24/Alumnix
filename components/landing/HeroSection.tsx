@@ -38,26 +38,14 @@ export default function HeroSection() {
               </div>
             </FadeUp>
 
-            <h1 className={`${syne.className} mt-8 text-6xl font-[900] leading-[1.05] text-brand-dark sm:text-8xl`}>
-              {words.map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 * i }}
-                  className={word === "Professionals." ? "text-brand-orange" : ""}
-                >
-                  {word}{" "}
-                </motion.span>
-              ))}
+            <h1 className={`${syne.className} mt-8 text-6xl font-[900] leading-[1.05] text-brand-dark sm:text-8xl animate-in fade-in slide-in-from-bottom-[20px] duration-700 ease-out fill-mode-both`}>
+              Where Interns Become <span className="text-brand-orange">Professionals.</span>
             </h1>
 
-            <FadeUp delay={0.4}>
-              <p className={`${nunito.className} mt-6 max-w-lg text-lg leading-relaxed text-brand-muted lg:mx-0 mx-auto`}>
-                Connect with 10,000+ alumni. Discover gigs, attend events, and
-                build the career network that your internship started.
-              </p>
-            </FadeUp>
+            <p className={`${nunito.className} mt-6 max-w-lg text-lg leading-relaxed text-brand-muted lg:mx-0 mx-auto animate-in fade-in slide-in-from-bottom-[20px] duration-700 delay-200 ease-out fill-mode-both`}>
+              Connect with 10,000+ alumni. Discover gigs, attend events, and
+              build the career network that your internship started.
+            </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <FadeUp delay={0.55}>

@@ -119,17 +119,17 @@ export default function FeaturesSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="h-full"
             >
-              <div className="animated-card group relative h-full w-full">
+              <div className="card h-full w-full">
                 <Link 
                   href={feature.href} 
-                  className="animated-content relative flex h-full flex-col p-6 sm:p-8"
+                  className="content h-full p-6 sm:p-8"
                 >
-                  <div className="relative mb-5 h-28 w-28 overflow-hidden rounded-xl border border-brand-orange/20 shadow-sm flex-shrink-0">
+                  <div className="relative mb-5 h-28 w-28 overflow-hidden flex-shrink-0 rounded-xl border border-brand-orange/20 shadow-sm transition-transform duration-500 hover:scale-105">
                     <Image 
                       src={feature.image} 
                       alt={feature.title} 
                       fill 
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover"
                     />
                     <div className={`absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-tl-xl bg-white shadow-sm`}>
                       <feature.icon className={`h-4 w-4 ${feature.iconColor}`} />
@@ -141,8 +141,8 @@ export default function FeaturesSection() {
                   <p className={`${nunito.className} mt-3 flex-1 text-sm leading-relaxed text-brand-dark/80 font-medium z-10`}>
                     {feature.description}
                   </p>
-                  <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors group-hover:text-brand-amber z-10 hover:underline`}>
-                    Learn more <span className="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
+                  <div className={`${nunito.className} mt-4 inline-flex items-center text-sm font-extrabold text-brand-orange transition-colors z-10 hover:text-brand-amber hover:underline`}>
+                    Learn more &rarr;
                   </div>
                 </Link>
               </div>

@@ -75,6 +75,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={true}
                 className={`flex items-center gap-3 rounded-xl px-3 py-3 transition-all duration-200 ${
                   isActive(item.href)
                     ? "bg-brand-orange text-white shadow-lg shadow-brand-orange/20"
@@ -123,29 +124,32 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className={`transition-all duration-300 ${isSidebarOpen ? "lg:ml-64" : "lg:ml-20"} pt-16 lg:pt-0`}>
         {/* Topbar */}
         <header className="sticky top-0 z-30 hidden h-20 items-center justify-between bg-white/80 px-8 backdrop-blur-md lg:flex">
-          <div className="flex w-96 items-center gap-3 rounded-2xl bg-brand-surface px-4 py-2.5">
+          <form 
+            onSubmit={(e) => { e.preventDefault(); /* Logic for search */ }}
+            className="flex w-96 items-center gap-3 rounded-2xl bg-brand-surface px-4 py-2.5 transition-all focus-within:ring-2 focus-within:ring-brand-orange/20"
+          >
             <Search className="h-4 w-4 text-brand-muted" />
             <input
               type="text"
               placeholder="Search alumni, gigs, events..."
               className="w-full bg-transparent text-sm focus:outline-none"
             />
-          </div>
+          </form>
 
           <div className="flex items-center gap-6">
-            <button className="relative rounded-full p-2 hover:bg-brand-surface">
+            <Link href="/notifications" className="relative rounded-full p-2 hover:bg-brand-surface transition-colors">
               <Bell className="h-5 w-5 text-brand-muted" />
               <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-brand-orange" />
-            </button>
-            <div className="flex items-center gap-3 border-l pl-6">
+            </Link>
+            <Link href="/dashboard" className="flex items-center gap-3 border-l pl-6 hover:opacity-80 transition-opacity">
               <div className="text-right">
                 <p className="text-base font-black text-brand-dark">{session?.user?.name || "User"}</p>
                 <p className="text-xs font-bold uppercase tracking-wider text-brand-muted">
                   {session?.user?.role || "ALUMNI"}
                 </p>
               </div>
-              <div className="h-10 w-10 rounded-xl bg-brand-sky" />
-            </div>
+              <div className="h-10 w-10 rounded-xl bg-brand-sky border-2 border-white shadow-sm" />
+            </Link>
           </div>
         </header>
 
@@ -168,16 +172,50 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              className="h-full w-4/5 max-w-sm bg-white p-6"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="h-full w-4/5 max-w-sm bg-white p-6 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between">
-                <span className={`${syne.className} text-xl font-bold`}>Menu</span>
-                <button onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-lg bg-brand-orange" />
+                  <span className={`${syne.className} text-xl font-bold text-brand-dark`}>AlumniX</span>
+                </div>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="rounded-full p-2 hover:bg-brand-surface"
+                >
                   <X className="h-6 w-6" />
                 </button>
               </div>
-              {/* ... same links as desktop ... */}
+
+              <div className="flex flex-col gap-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center gap-4 rounded-2xl px-4 py-4 transition-all ${
+                      isActive(item.href)
+                        ? "bg-brand-orange text-white shadow-lg shadow-brand-orange/20"
+                        : "text-brand-muted hover:bg-brand-surface hover:text-brand-dark"
+                    }`}
+                  >
+                    <item.icon className="h-5 w-5" />
+                    <span className="text-lg font-bold">{item.name}</span>
+                  </Link>
+                ))}
+                
+                <hr className="my-4 border-brand-surface" />
+                
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="flex items-center gap-4 rounded-2xl px-4 py-4 text-brand-muted hover:bg-red-50 hover:text-red-500 transition-colors"
+                >
+                  <LogOut className="h-5 w-5" />
+                  <span className="text-lg font-bold">Sign Out</span>
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}

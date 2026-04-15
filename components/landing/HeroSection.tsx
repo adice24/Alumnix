@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { syne, nunito } from "@/lib/fonts";
 import { Meteors } from "@/components/ui/meteors";
 
@@ -49,14 +50,20 @@ export default function HeroSection() {
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <FadeUp delay={0.55}>
-                <button className={`${syne.className} rounded-full bg-brand-orange px-8 py-4 text-base font-bold text-white shadow-xl shadow-brand-orange/30 transition hover:bg-brand-amber hover:scale-105 active:scale-95`}>
+                <Link 
+                  href="/auth/signup"
+                  className={`${syne.className} inline-block rounded-full bg-brand-orange px-8 py-4 text-base font-bold text-white shadow-xl shadow-brand-orange/30 transition hover:bg-brand-amber hover:scale-105 active:scale-95`}
+                >
                   Get Started Free &rarr;
-                </button>
+                </Link>
               </FadeUp>
               <FadeUp delay={0.65}>
-                <button className={`${syne.className} rounded-full border-2 border-brand-navy px-8 py-4 text-base font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white hover:scale-105 active:scale-95`}>
+                <Link 
+                  href="/network"
+                  className={`${syne.className} inline-block rounded-full border-2 border-brand-navy px-8 py-4 text-base font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white hover:scale-105 active:scale-95`}
+                >
                   Explore Network
-                </button>
+                </Link>
               </FadeUp>
             </div>
 

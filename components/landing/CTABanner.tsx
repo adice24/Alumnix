@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { syne, nunito } from "@/lib/fonts";
 
 export default function CTABanner() {
@@ -37,9 +38,12 @@ export default function CTABanner() {
            transition={{ delay: 0.2 }}
            className="mt-12"
         >
-          <button className={`${syne.className} rounded-full bg-white px-10 py-5 text-lg font-bold text-brand-orange shadow-2xl transition hover:bg-brand-dark hover:text-white hover:scale-105 active:scale-95`}>
+          <Link 
+            href="/auth/signup"
+            className={`${syne.className} inline-block rounded-full bg-white px-10 py-5 text-lg font-bold text-brand-orange shadow-2xl transition hover:bg-brand-dark hover:text-white hover:scale-105 active:scale-95`}
+          >
             Unlock Your Network Now
-          </button>
+          </Link>
           <p className={`${nunito.className} mt-6 text-sm font-bold text-white/60 tracking-wide uppercase`}>
             Free forever · No credit card · Alumni-only network
           </p>

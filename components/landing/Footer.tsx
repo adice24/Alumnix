@@ -8,19 +8,38 @@ export default function Footer() {
   const columns = [
     {
       title: "Platform",
-      links: ["Dashboard", "Gig Board", "Events", "Alumni Network", "Announcements"],
+      links: [
+        { name: "Dashboard", href: "/dashboard" },
+        { name: "Gig Board", href: "/gigs" },
+        { name: "Events", href: "/events" },
+        { name: "Alumni Network", href: "/network" },
+        { name: "Feed", href: "/feed" },
+      ],
     },
     {
       title: "Company",
-      links: ["About Us", "Careers", "Blog", "Press Kit"],
+      links: [
+        { name: "About Us", href: "#" },
+        { name: "Careers", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "Press Kit", href: "#" },
+      ],
     },
     {
       title: "Legal",
-      links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+      links: [
+        { name: "Privacy Policy", href: "#" },
+        { name: "Terms of Service", href: "#" },
+        { name: "Cookie Policy", href: "#" },
+      ],
     },
     {
       title: "Contact",
-      links: ["Help Center", "hello@alumnix.in", "Report an Issue"],
+      links: [
+        { name: "Help Center", href: "#" },
+        { name: "hello@alumnix.in", href: "mailto:hello@alumnix.in" },
+        { name: "Report an Issue", href: "#" },
+      ],
     },
   ];
 
@@ -56,12 +75,12 @@ export default function Footer() {
               </h3>
               <ul className="mt-6 flex flex-col gap-4">
                 {col.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <Link
-                      href="#"
+                      href={link.href}
                       className={`${nunito.className} text-sm font-medium text-white/40 transition hover:text-white`}
                     >
-                      {link}
+                      {link.name}
                     </Link>
                   </li>
                 ))}

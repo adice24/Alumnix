@@ -1,6 +1,7 @@
 import { syne, nunito } from "@/lib/fonts";
 import { prisma } from "@/lib/prisma";
 import { Briefcase, Calendar, Users, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 export default async function DashboardPage() {
   // Fetch some aggregate stats
@@ -15,11 +16,16 @@ export default async function DashboardPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  const nextEvent = await prisma.event.findFirst({
+    where: { startsAt: { gte: new Date() } },
+    orderBy: { startsAt: "asc" },
+  });
+
   const stats = [
-    { name: "Active Gigs", value: gigCount, icon: Briefcase, color: "bg-brand-orange" },
-    { name: "Upcoming Events", value: eventCount, icon: Calendar, color: "bg-brand-sky" },
-    { name: "Network Size", value: userCount, icon: Users, color: "bg-brand-yellow" },
-    { name: "Applications", value: 12, icon: TrendingUp, color: "bg-brand-navy" },
+    { name: "Active Gigs", value: gigCount, icon: Briefcase, color: "bg-brand-orange", href: "/gigs" },
+    { name: "Upcoming Events", value: eventCount, icon: Calendar, color: "bg-brand-sky", href: "/events" },
+    { name: "Network Size", value: userCount, icon: Users, color: "bg-brand-yellow", href: "/network" },
+    { name: "Applications", value: 12, icon: TrendingUp, color: "bg-brand-navy", href: "/applications" },
   ];
 
   return (
@@ -36,7 +42,11 @@ export default async function DashboardPage() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
-          <div key={stat.name} className="flex items-center gap-4 rounded-3xl bg-white p-6 shadow-sm border border-transparent hover:border-brand-orange/20 transition-all">
+          <Link 
+            key={stat.name} 
+            href={stat.href}
+            className="flex items-center gap-4 rounded-3xl bg-white p-6 shadow-sm border border-transparent hover:border-brand-orange/20 transition-all hover:-translate-y-1"
+          >
             <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${stat.color} text-white shadow-lg`}>
               <stat.icon className="h-6 w-6" />
             </div>
@@ -44,7 +54,7 @@ export default async function DashboardPage() {
               <p className="text-sm font-black uppercase tracking-wider text-brand-muted">{stat.name}</p>
               <p className={`${syne.className} text-3xl font-black text-brand-dark mt-1`}>{stat.value}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -53,7 +63,7 @@ export default async function DashboardPage() {
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between px-2">
             <h2 className={`${syne.className} text-2xl font-black text-brand-dark`}>Newest Gigs</h2>
-            <button className="text-sm font-bold text-brand-orange hover:underline">View All &rarr;</button>
+            <Link href="/gigs" className="text-sm font-bold text-brand-orange hover:underline">View All &rarr;</Link>
           </div>
           <div className="space-y-4">
             {recentGigs.map((gig) => (
@@ -72,9 +82,12 @@ export default async function DashboardPage() {
                     <p className="text-lg font-black text-brand-dark">₹{gig.salaryBand || "TBD"}</p>
                     <p className="text-xs font-bold text-brand-muted uppercase">Monthly</p>
                   </div>
-                  <button className="rounded-full bg-brand-orange/10 px-6 py-2 text-xs font-bold text-brand-orange hover:bg-brand-orange hover:text-white transition-all">
+                  <Link 
+                    href={`/gigs`}
+                    className="rounded-full bg-brand-orange/10 px-6 py-2 text-xs font-bold text-brand-orange hover:bg-brand-orange hover:text-white transition-all"
+                  >
                     Apply
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -89,14 +102,33 @@ export default async function DashboardPage() {
         {/* Sidebar/Notifications */}
         <div className="space-y-4">
           <h2 className={`${syne.className} text-2xl font-black text-brand-dark px-2`}>Updates</h2>
-          <div className="rounded-3xl bg-brand-navy p-6 shadow-xl text-white">
-            <p className="text-sm font-bold uppercase tracking-widest text-white/60">Next Event</p>
-            <h3 className="mt-2 text-2xl font-black">Annual Alumni Meetup &apos;24</h3>
-            <p className="mt-2 text-base font-medium text-white/80">April 15, 2024 · 7:00 PM</p>
-            <button className="mt-6 w-full rounded-2xl bg-white/10 py-4 text-sm font-bold backdrop-blur-md hover:bg-white/20 transition">
-              RSVP Now
-            </button>
-          </div>
+          {nextEvent ? (
+            <div className="rounded-3xl bg-brand-navy p-6 shadow-xl text-white">
+              <p className="text-sm font-bold uppercase tracking-widest text-white/60">Next Event</p>
+              <h3 className="mt-2 text-2xl font-black">{nextEvent.title}</h3>
+              <p className="mt-2 text-base font-medium text-white/80">
+                {new Date(nextEvent.startsAt).toLocaleString("en-IN", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+              <Link 
+                href={`/events`}
+                className="mt-6 inline-block w-full text-center rounded-2xl bg-white/10 py-4 text-sm font-bold backdrop-blur-md hover:bg-white/20 transition"
+              >
+                RSVP Now
+              </Link>
+            </div>
+          ) : (
+            <div className="rounded-3xl bg-brand-surface p-8 text-center border-2 border-dashed">
+               <Calendar className="h-8 w-8 text-brand-muted mx-auto mb-3" />
+               <p className="text-sm font-bold text-brand-muted">No upcoming events found.</p>
+               <Link href="/events" className="text-xs font-black text-brand-orange uppercase mt-4 block">Request an Event</Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

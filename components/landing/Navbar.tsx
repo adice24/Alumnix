@@ -65,12 +65,14 @@ export default function Navbar() {
           <div className={`${nunito.className} hidden items-center gap-4 lg:flex`}>
             <Link
               href="/auth/login"
+              prefetch={true}
               className="rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white active:scale-95"
             >
               Login
             </Link>
             <Link
               href="/auth/signup"
+              prefetch={true}
               className="rounded-full bg-brand-orange px-6 py-2 text-sm font-bold text-white shadow-lg shadow-brand-orange/20 transition hover:bg-brand-amber active:scale-95"
             >
               Join Free

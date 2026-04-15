@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { syne, nunito } from "@/lib/fonts";
 
 const spotlight = [
@@ -67,9 +68,12 @@ export default function AlumniSpotlight() {
                 whileHover={{ opacity: 1 }}
                 className="absolute inset-0 z-10 flex items-center justify-center bg-brand-orange/90 backdrop-blur-[2px] transition-opacity cursor-pointer"
               >
-                <button className={`${syne.className} rounded-full bg-white px-6 py-2.5 text-sm font-bold text-brand-orange shadow-xl`}>
+                <Link 
+                  href="/network"
+                  className={`${syne.className} rounded-full bg-white px-6 py-2.5 text-sm font-bold text-brand-orange shadow-xl hover:scale-105 active:scale-95 transition-transform`}
+                >
                   View Profile &rarr;
-                </button>
+                </Link>
               </motion.div>
             </motion.div>
           ))}
